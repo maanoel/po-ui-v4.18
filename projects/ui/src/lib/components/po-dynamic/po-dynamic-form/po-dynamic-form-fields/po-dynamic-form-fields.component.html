@@ -1,0 +1,265 @@
+<div class="po-row" *ngIf="visibleFields && visibleFields.length > 0">
+  <ng-container *ngFor="let field of visibleFields; trackBy: trackBy">
+    <po-divider *ngIf="field?.divider?.trim()" class="po-sm-12" [p-label]="field.divider"> </po-divider>
+
+    <po-datepicker
+      #component
+      *ngIf="compareTo(field.control, 'datepicker')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-clean
+      [p-disabled]="isDisabled(field)"
+      [p-error-pattern]="field.errorMessage"
+      [p-auto-focus]="field.focus"
+      [p-format]="field.format"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-max-date]="field.maxValue"
+      [p-min-date]="field.minValue"
+      [p-optional]="field.optional"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-datepicker>
+
+    <po-input
+      #component
+      *ngIf="compareTo(field.control, 'input')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-clean
+      [p-disabled]="isDisabled(field)"
+      [p-error-pattern]="field.errorMessage"
+      [p-auto-focus]="field.focus"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-mask-format-model]="field.maskFormatModel"
+      [p-mask]="field.mask"
+      [p-maxlength]="field.maxLength"
+      [p-minlength]="field.minLength"
+      [p-optional]="field.optional"
+      [p-pattern]="field.pattern"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+      [p-icon]="field.icon"
+    >
+    </po-input>
+
+    <po-number
+      #component
+      *ngIf="compareTo(field.control, 'number')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-clean
+      [p-disabled]="isDisabled(field)"
+      [p-error-pattern]="field.errorMessage"
+      [p-auto-focus]="field.focus"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-min]="field.minValue"
+      [p-max]="field.maxValue"
+      [p-maxlength]="field.maxLength"
+      [p-minlength]="field.minLength"
+      [p-optional]="field.optional"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+      [p-icon]="field.icon"
+    >
+    </po-number>
+
+    <po-decimal
+      #component
+      *ngIf="compareTo(field.control, 'decimal')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-clean
+      [p-disabled]="isDisabled(field)"
+      [p-decimals-length]="field.decimalsLength"
+      [p-thousand-maxlength]="field.thousandMaxlength"
+      [p-icon]="field.icon"
+      [p-auto-focus]="field.focus"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-optional]="field.optional"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-decimal>
+
+    <po-select
+      #component
+      *ngIf="compareTo(field.control, 'select')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      [p-auto-focus]="field.focus"
+      [p-disabled]="isDisabled(field)"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-optional]="field.optional"
+      [p-options]="field.options"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-select>
+
+    <po-radio-group
+      #component
+      *ngIf="compareTo(field.control, 'radioGroup')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-columns="3"
+      [p-auto-focus]="field.focus"
+      [p-disabled]="isDisabled(field)"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-optional]="field.optional"
+      [p-options]="field.options"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-radio-group>
+
+    <po-switch
+      #component
+      *ngIf="compareTo(field.control, 'switch')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      [p-auto-focus]="field.focus"
+      [p-disabled]="isDisabled(field)"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-label-off]="field.booleanFalse"
+      [p-label-on]="field.booleanTrue"
+      (p-change)="onChangeField(field)"
+    >
+    </po-switch>
+
+    <po-combo
+      #component
+      *ngIf="compareTo(field.control, 'combo')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-emit-object-value
+      [p-auto-focus]="field.focus"
+      [p-disabled]="isDisabled(field)"
+      [p-field-label]="field.fieldLabel"
+      [p-field-value]="field.fieldValue"
+      [p-filter-params]="field.params"
+      [p-filter-service]="field.optionsService"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-optional]="field.optional"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field, $event)"
+      [p-icon]="field.icon"
+    >
+    </po-combo>
+
+    <po-lookup
+      #component
+      *ngIf="compareTo(field.control, 'lookup')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      p-field-label="label"
+      p-field-value="value"
+      [ngClass]="field.componentClass"
+      [p-columns]="field.columns"
+      [p-disabled]="isDisabled(field)"
+      [p-field-label]="field.fieldLabel || 'label'"
+      [p-field-value]="field.fieldValue || 'value'"
+      [p-filter-params]="field.params"
+      [p-filter-service]="field.searchService"
+      [p-auto-focus]="field.focus"
+      [p-help]="field.help"
+      [p-field-format]="field.format"
+      [p-label]="field.label"
+      [p-optional]="field.optional"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-lookup>
+
+    <po-checkbox-group
+      #component
+      *ngIf="compareTo(field.control, 'checkboxGroup')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-columns="3"
+      [p-auto-focus]="field.focus"
+      [p-disabled]="isDisabled(field)"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-optional]="field.optional"
+      [p-options]="field.options"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-checkbox-group>
+
+    <po-multiselect
+      #component
+      *ngIf="compareTo(field.control, 'multiselect')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      [p-disabled]="isDisabled(field)"
+      [p-auto-focus]="field.focus"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-optional]="field.optional"
+      [p-options]="field.options"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-multiselect>
+
+    <po-textarea
+      #component
+      *ngIf="compareTo(field.control, 'textarea')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      [p-disabled]="isDisabled(field)"
+      [p-auto-focus]="field.focus"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-maxlength]="field.maxLength"
+      [p-minlength]="field.minLength"
+      [p-optional]="field.optional"
+      [p-required]="field.required"
+      [p-rows]="field.rows"
+      (p-change)="onChangeField(field)"
+    >
+    </po-textarea>
+
+    <po-password
+      #component
+      *ngIf="compareTo(field.control, 'password')"
+      [name]="field.property"
+      [(ngModel)]="value[field.property]"
+      [ngClass]="field.componentClass"
+      p-clean
+      [p-disabled]="isDisabled(field)"
+      [p-error-pattern]="field.errorMessage"
+      [p-auto-focus]="field.focus"
+      [p-help]="field.help"
+      [p-label]="field.label"
+      [p-maxlength]="field.maxLength"
+      [p-minlength]="field.minLength"
+      [p-optional]="field.optional"
+      [p-pattern]="field.pattern"
+      [p-required]="field.required"
+      (p-change)="onChangeField(field)"
+    >
+    </po-password>
+  </ng-container>
+</div>

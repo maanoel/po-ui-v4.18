@@ -1,0 +1,39 @@
+{
+  "name": "@po-ui/ng-sync",
+  "version": "0.0.0-PLACEHOLDER",
+  "tag": "next",
+  "description": "PO UI - Sync",
+  "author": "PO UI",
+  "license": "MIT",
+  "homepage": "https://po-ui.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/po-ui/po-angular"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-update": {
+    "migrations": "./schematics/migrations.json",
+    "packageGroup": [
+      "@po-ui/ng-sync",
+      "@po-ui/ng-storage"
+    ]
+  },
+  "dependencies": {
+    "@ionic-native/core": "5.23.0",
+    "@ionic-native/network": "5.23.0",
+    "@po-ui/ng-storage": "0.0.0-PLACEHOLDER",
+    "http-status-codes": "^1.4.0",
+    "@po-ui/ng-schematics": "0.0.0-PLACEHOLDER",
+    "tslib": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@angular/core": "~11.2.0",
+    "@ionic-native/core": "5.23.0",
+    "@ionic-native/network": "5.23.0",
+    "@po-ui/ng-storage": "0.0.0-PLACEHOLDER",
+    "http-status-codes": "^1.4.0",
+    "rxjs": "~6.6.0",
+    "rxjs-compat": "~6.6.0",
+    "zone.js": "~0.10.3"
+  }
+}

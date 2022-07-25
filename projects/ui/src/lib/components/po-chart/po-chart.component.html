@@ -1,0 +1,27 @@
+<div #chartWrapper class="po-chart-wrapper" (p-resize-observer)="resizeAction()">
+  <div #chartHeader class="po-chart-header">
+    <div class="po-chart-title">{{ title }}</div>
+  </div>
+
+  <po-chart-container
+    *ngIf="!isChartGaugeType"
+    [p-options]="options"
+    [p-type]="chartType"
+    [p-series]="chartSeries"
+    [p-categories]="categories"
+    [p-container-size]="svgContainerSize"
+    (p-serie-click)="onSeriesClick($event)"
+    (p-serie-hover)="onSeriesHover($event)"
+  ></po-chart-container>
+
+  <!-- Injeção de gráficos do tipo gauge. Remover na depreciação.  -->
+  <ng-template #chartContainer></ng-template>
+
+  <div *ngIf="!isChartGaugeType && options?.legend !== false">
+    <ng-container *ngTemplateOutlet="chartLegendGroup"></ng-container>
+  </div>
+</div>
+
+<ng-template #chartLegendGroup>
+  <po-chart-legend #chartLegend [p-series]="chartSeries" [p-type]="type"> </po-chart-legend>
+</ng-template>

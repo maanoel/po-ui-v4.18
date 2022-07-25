@@ -1,0 +1,45 @@
+<po-page>
+  <!-- HEADER -->
+  <po-page-header *ngIf="hasPageHeader()" [p-breadcrumb]="breadcrumb" [p-title]="title">
+    <!-- OPERATIONS -->
+    <div class="po-page-header-actions">
+      <po-dropdown
+        *ngIf="visibleActions.length > limitPrimaryActions"
+        [p-label]="literals.otherActions"
+        [p-actions]="dropdownActions"
+      >
+      </po-dropdown>
+
+      <po-button
+        *ngIf="visibleActions.length === 3 && visibleActions[2] && !isMobile"
+        [p-disabled]="actionIsDisabled(visibleActions[2])"
+        [p-label]="visibleActions[2].label"
+        (p-click)="callAction(visibleActions[2])"
+      >
+      </po-button>
+
+      <po-button
+        *ngIf="visibleActions[1] && (visibleActions.length === 2 || !isMobile)"
+        [p-disabled]="actionIsDisabled(visibleActions[1])"
+        [p-label]="visibleActions[1].label"
+        (p-click)="callAction(visibleActions[1])"
+      >
+      </po-button>
+
+      <po-button
+        *ngIf="visibleActions[0]"
+        p-type="primary"
+        [p-disabled]="actionIsDisabled(visibleActions[0])"
+        [p-icon]="visibleActions[0].icon"
+        [p-label]="visibleActions[0].label"
+        (p-click)="callAction(visibleActions[0])"
+      >
+      </po-button>
+    </div>
+  </po-page-header>
+
+  <!-- CONTENT -->
+  <po-page-content>
+    <ng-content></ng-content>
+  </po-page-content>
+</po-page>

@@ -1,0 +1,36 @@
+<div #contactGroup class="po-page-blocked-user-contact-group po-row po-mb-3">
+  <div
+    class="po-page-blocked-user-contact-item"
+    [class.po-invisible]="!phone"
+    [ngClass]="overflowItem ? 'po-md-12' : 'po-md-6'"
+  >
+    <a
+      class="po-page-blocked-user-link po-clickable"
+      [class.po-page-blocked-user-contact-content-inline]="overflowItem"
+      href="tel:{{ phone }}"
+      target="_self"
+    >
+      <div class="po-page-blocked-user-contact-group-item">
+        <span class="po-page-blocked-user-contact-icon po-icon po-icon-telephone po-pr-1"></span>
+        <div #phoneItem class="po-page-blocked-user-contact-text po-font-text">{{ phone }}</div>
+      </div>
+    </a>
+  </div>
+  <div
+    class="po-page-blocked-user-contact-item po-page-blocked-user-contact-mail"
+    [class.po-invisible]="!email"
+    [ngClass]="overflowItem ? 'po-md-12' : 'po-md-6'"
+  >
+    <a
+      class="po-page-blocked-user-link po-clickable"
+      [class.po-page-blocked-user-contact-content-inline]="overflowItem"
+      href="mailto:{{ email }}"
+      target="_self"
+    >
+      <div class="po-page-blocked-user-contact-group-item">
+        <span class="po-page-blocked-user-contact-icon po-icon po-icon-mail po-pr-1"></span>
+        <div #mailItem class="po-page-blocked-user-contact-text po-font-text">{{ email }}</div>
+      </div>
+    </a>
+  </div>
+</div>

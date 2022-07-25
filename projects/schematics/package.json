@@ -1,0 +1,22 @@
+{
+  "name": "@po-ui/ng-schematics",
+  "version": "0.0.0-PLACEHOLDER",
+  "tag": "next",
+  "description": "PO UI - Schematics",
+  "author": "PO UI",
+  "license": "MIT",
+  "homepage": "https://po-ui.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/po-ui/po-angular"
+  },
+  "scripts": {
+    "build": "gulp build:schematics:lib",
+    "postbuild": "gulp replaceVersion && cd ../../dist/ng-schematics && npm pack"
+  },
+  "peerDependencies": {
+    "@angular-devkit/core": "^11.0.2",
+    "@angular-devkit/schematics": "^11.0.2",
+    "@schematics/angular": "^11.0.2"
+  }
+}

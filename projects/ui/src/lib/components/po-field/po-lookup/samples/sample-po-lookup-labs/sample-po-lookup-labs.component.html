@@ -1,0 +1,138 @@
+<po-lookup
+  name="lookup"
+  [(ngModel)]="lookup"
+  [p-columns]="columns"
+  [p-disabled]="properties.includes('disabled')"
+  [p-field-label]="fieldLabel"
+  [p-field-value]="fieldValue"
+  [p-field-format]="fieldFormat"
+  [p-filter-service]="filterService || sampleFilterService"
+  [p-help]="help"
+  [p-label]="label"
+  [p-literals]="customLiterals"
+  [p-advanced-filters]="customAdvancedFilters"
+  [p-no-autocomplete]="properties.includes('noAutocomplete')"
+  [p-optional]="properties.includes('optional')"
+  [p-placeholder]="placeholder"
+  [p-required]="properties.includes('required')"
+  (p-error)="changeEvent('p-error')"
+  (p-selected)="changeEvent('p-selected')"
+  (p-change)="changeEvent('p-change')"
+>
+</po-lookup>
+
+<hr />
+
+<div class="po-row">
+  <po-info class="po-md-6" p-label="Model" [p-value]="lookup"> </po-info>
+
+  <po-info class="po-md-6" p-label="Event" [p-value]="event"> </po-info>
+</div>
+
+<hr />
+
+<form #f="ngForm">
+  <div class="po-row">
+    <po-input class="po-md-6" name="label" [(ngModel)]="label" p-clean p-label="Label"> </po-input>
+
+    <po-checkbox-group
+      class="po-md-6"
+      name="columnsName"
+      [(ngModel)]="columnsName"
+      p-columns="4"
+      p-label="Columns"
+      [p-options]="columnsOptions"
+      (p-change)="updateColumns()"
+    >
+    </po-checkbox-group>
+  </div>
+
+  <div class="po-row">
+    <po-select
+      class="po-md-6"
+      name="fieldLabel"
+      [(ngModel)]="fieldLabel"
+      p-label="Field Label"
+      p-required
+      [p-options]="fieldLabelOptions"
+    >
+    </po-select>
+
+    <po-select
+      class="po-md-6"
+      name="fieldValue"
+      [(ngModel)]="fieldValue"
+      p-label="Field Value"
+      p-required
+      [p-options]="fieldValueOptions"
+    >
+    </po-select>
+  </div>
+
+  <div class="po-row">
+    <po-input
+      class="po-sm-12"
+      name="filterService"
+      [(ngModel)]="filterService"
+      p-clean
+      p-help="https://po-sample-api.herokuapp.com/v1/people"
+      p-label="Filter Service"
+    >
+    </po-input>
+  </div>
+
+  <div class="po-row">
+    <po-input class="po-lg-6" name="help" [(ngModel)]="help" p-clean p-label="Help"> </po-input>
+
+    <po-input class="po-lg-6" name="placeholder" [(ngModel)]="placeholder" p-clean p-label="Placeholder"> </po-input>
+  </div>
+
+  <div class="po-row">
+    <po-input
+      class="po-lg-12"
+      name="literals"
+      [(ngModel)]="literals"
+      p-help='Ex.: { "modalTitle": "Select a register", "modalPrimaryActionLabel": "Select", "modalPlaceholder": "Search Value" }'
+      p-label="Literals"
+      (p-change)="changeLiterals()"
+    >
+    </po-input>
+
+    <po-input
+      name="formatField"
+      [(ngModel)]="formatField"
+      class="po-lg-6"
+      p-label="Field Format"
+      p-help='Ex.: ["id", "name"]'
+      (p-change)="onFieldFormatChange($event)"
+    >
+    </po-input>
+
+    <po-checkbox-group
+      class="po-lg-6"
+      name="properties"
+      [(ngModel)]="properties"
+      p-columns="3"
+      p-label="Properties"
+      [p-options]="propertiesOptions"
+    >
+    </po-checkbox-group>
+  </div>
+
+  <div class="po-row">
+    <po-textarea
+      class="po-md-6"
+      name="advancedFilters"
+      [(ngModel)]="advancedFilters"
+      (p-change)="changeAdvancedFilters()"
+      p-help='Ex.: [{"property":"name","divider":"PERSONAL DATA","required":true,"gridColumns":6},{"property":"id","optional":true,"gridColumns":6}]'
+      p-label="Advanced Filters"
+      p-rows="4"
+    >
+    </po-textarea>
+  </div>
+
+  <div class="po-row">
+    <po-button class="po-md-3" p-label="Sample Restore" (p-click)="restore()"> </po-button>
+  </div>
+</form>

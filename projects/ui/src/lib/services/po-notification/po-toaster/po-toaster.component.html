@@ -1,0 +1,16 @@
+<div
+  #toaster
+  *ngIf="getShowToaster()"
+  class="po-toaster {{ getToasterType() }} {{ getToasterPosition() }} po-clickable"
+  (click)="close()"
+>
+  <div class="po-toaster-icon">
+    <span class="po-icon {{ getIcon() }}"></span>
+  </div>
+
+  <div class="po-toaster-message">{{ message }}</div>
+
+  <div *ngIf="action !== undefined" (click)="poToasterAction()" class="po-toaster-action">
+    {{ actionLabel }}
+  </div>
+</div>

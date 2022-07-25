@@ -1,0 +1,25 @@
+<div class="po-row">
+  <po-widget class="po-lg-6" [p-primary-label]="knowMoreLabel" (p-primary-action)="knowMore(heroName)">
+    <po-combo
+      name="heroName"
+      [(ngModel)]="heroName"
+      p-field-label="nickname"
+      p-field-value="name"
+      p-filter-service="https://po-sample-api.herokuapp.com/v1/heroes"
+      p-label="Search a Hero"
+      p-sort
+      (p-change)="onChangeHero($event)"
+    >
+    </po-combo>
+
+    <ng-container *ngIf="hero$ | async as hero">
+      <div class="po-row">
+        <po-info class="po-md-4" p-label="Name" [p-value]="hero.name"> </po-info>
+
+        <po-info class="po-md-4" p-label="Nickname" [p-value]="hero.nickname"> </po-info>
+
+        <po-info class="po-md-4" p-label="Email" [p-value]="hero.email"> </po-info>
+      </div>
+    </ng-container>
+  </po-widget>
+</div>

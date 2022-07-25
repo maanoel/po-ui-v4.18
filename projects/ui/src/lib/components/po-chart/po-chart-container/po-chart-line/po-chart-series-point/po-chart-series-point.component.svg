@@ -1,0 +1,17 @@
+<svg:circle *ngFor="let item of coordinates$ | async; trackBy: trackBy" 
+  [p-tooltip]="item.tooltipLabel"
+  [p-append-in-body]='true'
+  [p-display-tooltip]="!chartLine && item.isActive"
+  p-tooltip-position="top"
+  class="po-chart-line-point"
+  [class]="strokeColor?.includes('po-border-color') ? strokeColor : ''"
+  [class.po-chart-active-point]="item.isActive"
+  [attr.cx]="item.xCoordinate"
+  [attr.cy]="item.yCoordinate"
+  [attr.r]="radius"
+  [attr.stroke]="strokeColor"
+  (click)="onClick(item)"
+  (mouseenter)="onMouseEnter($event, item)"
+  (mouseleave)="onMouseLeave($event)"
+  >
+</svg:circle>

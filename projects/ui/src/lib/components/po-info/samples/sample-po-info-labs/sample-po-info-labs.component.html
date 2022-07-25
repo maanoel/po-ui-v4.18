@@ -1,0 +1,40 @@
+<po-info [p-label]="label" [p-label-size]="labelSize" [p-orientation]="orientation" [p-url]="url" [p-value]="value">
+</po-info>
+
+<hr />
+
+<form #f="ngForm">
+  <div class="po-row">
+    <po-input class="po-md-6" name="label" [(ngModel)]="label" p-clean p-label="Label" p-required> </po-input>
+
+    <po-input class="po-md-6" name="value" [(ngModel)]="value" p-clean p-label="Value"> </po-input>
+  </div>
+
+  <div class="po-row">
+    <po-input class="po-lg-4 po-md-6" name="url" [(ngModel)]="url" p-clean p-label="Url"> </po-input>
+
+    <po-number
+      class="po-lg-2 po-md-6"
+      name="labelSize"
+      [(ngModel)]="labelSize"
+      p-clean
+      p-label="Label size"
+      p-max="11"
+      p-min="1"
+    >
+    </po-number>
+
+    <po-radio-group
+      class="po-lg-6 po-md-12"
+      name="orientation"
+      [(ngModel)]="orientation"
+      p-label="Orientation"
+      [p-options]="orientationOptions"
+    >
+    </po-radio-group>
+  </div>
+
+  <div class="po-row">
+    <po-button class="po-md-3" p-label="Sample Restore" (p-click)="restore()"> </po-button>
+  </div>
+</form>

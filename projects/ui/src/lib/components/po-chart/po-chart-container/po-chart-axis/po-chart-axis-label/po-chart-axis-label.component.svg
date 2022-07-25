@@ -1,0 +1,19 @@
+<svg:g>
+  <svg:text *ngFor="let item of axisXLabelCoordinates; trackBy: trackBy"
+    class="po-chart-axis-x-label" 
+    dominant-baseline="middle"
+    [attr.x]="item.xCoordinate"
+    [attr.y]="item.yCoordinate">
+    {{ item.label }}
+  </svg:text> 
+</svg:g>
+
+<svg:g>
+  <svg:text *ngFor="let item of axisYLabelCoordinates; let first = first; let last = last; trackBy: trackBy"
+    class="po-chart-axis-y-label" 
+    [class.po-chart-centered-label]="!alignByTheCorners"
+    [attr.x]="item.xCoordinate"
+    [attr.y]="item.yCoordinate">
+    {{ item.label }}
+  </svg:text> 
+</svg:g>

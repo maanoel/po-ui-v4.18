@@ -1,0 +1,87 @@
+<div class="po-row">
+  <div class="po-md-12 po-lg-6">
+    <div class="po-row">
+      <po-chart
+        class="po-md-12 po-mt-2"
+        p-title="Participation by country in world exports - %"
+        [p-options]="options"
+        [p-categories]="categories"
+        [p-series]="participationByCountryInWorldExports"
+        [p-type]="participationByCountryInWorldExportsType"
+      >
+      </po-chart>
+
+      <po-chart
+        class="po-md-12 po-mt-2"
+        p-title="Evolution of coffee and some competitors - %"
+        [p-options]="optionsColumn"
+        [p-categories]="categoriesColumn"
+        [p-series]="evolutionOfCoffeeAndSomeCompetitors"
+      >
+      </po-chart>
+    </div>
+  </div>
+
+  <div class="po-md-12 po-lg-6">
+    <po-chart
+      class="po-md-12 po-mt-2"
+      p-title="Ranking of the most purchased and consumed beverages in Germany between 2018 and 2020 - in %"
+      [p-height]="816"
+      [p-categories]="consumptionPerCapitaItems"
+      [p-series]="consumptionPerCapita"
+      [p-type]="consumptionPerCapitaType"
+      [p-options]="consumptionPerCapitaOptions"
+    >
+    </po-chart>
+  </div>
+
+  <div class="po-md-12">
+    <po-chart
+      class="po-lg-6 po-mt-2"
+      p-title="Top 5 coffee producing countries (in tons)"
+      [p-series]="coffeeProduction"
+      (p-series-click)="searchMore($event)"
+    >
+    </po-chart>
+
+    <po-chart
+      class="po-lg-6 po-mt-2"
+      p-title="Top 5 Coffee Consuming Countries (in kg per capita)"
+      [p-series]="coffeeConsumption"
+      [p-type]="coffeConsumingChartType"
+      (p-series-click)="showMeTheDates($event)"
+    >
+    </po-chart>
+  </div>
+
+  <div class="po-row">
+    <po-chart
+      class="po-md-6 po-mt-2"
+      p-title="While the coffee price falls, all three of these companies profit margins have risen  - (US$ millions)"
+      [p-options]="chartAreaOptions"
+      [p-categories]="chartAreaCategories"
+      [p-series]="chartAreaSeries"
+    >
+    </po-chart>
+
+    <div class="po-md-6 po-mt-2">
+      <po-widget p-height="198">
+        <div class="po-font-title po-text-center po-pt-5">66 billion</div>
+        <div class="po-text-center">cups of coffee are consumed per year in U.S.</div>
+      </po-widget>
+
+      <po-widget p-height="198">
+        <div class="po-font-title po-text-center po-pt-5">2nd most</div>
+        <div class="po-text-center">traded commodity in the world second to Oil.</div>
+      </po-widget>
+    </div>
+  </div>
+</div>
+
+<div class="po-row">
+  <po-container class="po-lg-12 po-mt-2">
+    <div class="po-font-text-bold">Top 10 Largest Coffee Chains in the World</div>
+
+    <po-table p-container="shadow" [p-items]="items"> </po-table>
+  </po-container>
+</div>

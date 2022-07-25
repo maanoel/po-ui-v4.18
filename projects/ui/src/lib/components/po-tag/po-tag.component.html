@@ -1,0 +1,23 @@
+<div class="po-tag-container" [class.po-tag-container-horizontal]="tagOrientation">
+  <div *ngIf="label" class="po-tag-title po-text-nowrap">
+    <span class="po-tag-label">{{ tagOrientation ? label + ':' : label }}</span>
+  </div>
+
+  <div class="po-tag-sub-container">
+    <div
+      class="po-tag"
+      [class.po-clickable]="isClickable"
+      [class.po-tag-inverse]="inverse"
+      [ngClass]="tagColor"
+      tabindex="0"
+      (click)="onClick()"
+      (keydown.enter)="onKeyPressed($event)"
+      (keydown.space)="$event.preventDefault()"
+      (keyup.space)="onKeyPressed($event)"
+    >
+      <po-icon *ngIf="icon" class="po-tag-icon" [p-icon]="!type ? icon : iconFromType"> </po-icon>
+
+      <span class="po-tag-value">{{ value }}</span>
+    </div>
+  </div>
+</div>

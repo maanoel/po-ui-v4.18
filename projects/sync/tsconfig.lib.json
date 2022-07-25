@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "outDir": "../../out-tsc/lib",
+    "declarationMap": true,
+    "target": "es2015",
+    "declaration": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "types": [],
+    "lib": ["dom", "es2018"]
+  },
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "fullTemplateTypeCheck": true
+  },
+  "exclude": ["node_modules", "src/test.ts", "**/*.spec.ts"]
+}

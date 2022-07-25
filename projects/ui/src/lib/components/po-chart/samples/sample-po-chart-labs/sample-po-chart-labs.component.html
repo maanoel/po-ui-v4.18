@@ -1,0 +1,145 @@
+<po-chart
+  [p-categories]="allCategories"
+  [p-height]="height"
+  [p-options]="options"
+  [p-series]="series"
+  [p-title]="title"
+  [p-type]="type"
+  (p-series-click)="changeEvent('p-series-click', $event)"
+  (p-series-hover)="changeEvent('p-series-hover', $event)"
+>
+</po-chart>
+
+<po-divider class="po-md-12" p-label="Events"></po-divider>
+
+<div class="po-row">
+  <po-info p-label="Event" [p-value]="event"> </po-info>
+</div>
+
+<po-divider class="po-md-12" p-label="Properties"></po-divider>
+
+<form>
+  <po-select class="po-md-4" name="type" [(ngModel)]="type" p-columns="3" p-label="Type" [p-options]="typeOptions">
+  </po-select>
+
+  <po-number class="po-md-4" name="height" [(ngModel)]="height" p-label="Height"> </po-number>
+
+  <po-input class="po-md-4" name="title" [(ngModel)]="title" p-label="Title"> </po-input>
+</form>
+
+<form #chartSeries="ngForm">
+  <po-divider class="po-md-12" p-label="Chart series"></po-divider>
+
+  <div class="po-row">
+    <po-input
+      class="po-md-4"
+      name="label"
+      [(ngModel)]="label"
+      p-label="Label"
+      p-help="Serie label"
+      p-required
+    ></po-input>
+
+    <po-input
+      class="po-md-4"
+      name="data"
+      [(ngModel)]="data"
+      p-label="Data"
+      p-help="Example: [25, 58, 83, 66] or 25"
+      p-required
+    >
+    </po-input>
+
+    <po-select
+      class="po-md-4"
+      name="serieType"
+      [(ngModel)]="serieType"
+      p-help="Serie Type"
+      p-label="Type"
+      [p-options]="typeOptions"
+    >
+    </po-select>
+
+    <po-input class="po-md-4" name="tooltip" [(ngModel)]="tooltip" p-label="Tooltip" p-help="Custom Tooltip"></po-input>
+    <po-input class="po-md-4" name="color" [(ngModel)]="color" p-label="Color" p-help="Custom Color"></po-input>
+  </div>
+
+  <div class="po-row">
+    <po-button class="po-md-4" p-label="Add Serie" (p-click)="addData(); chartSeries.reset()"> </po-button>
+  </div>
+</form>
+
+<form>
+  <div class="po-row">
+    <po-divider class="po-md-12"></po-divider>
+
+    <po-input
+      class="po-md-4"
+      name="categories"
+      [(ngModel)]="categories"
+      p-help='Example: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]'
+      p-label="Categories"
+      (p-blur)="addCategories()"
+    >
+    </po-input>
+
+    <po-divider class="po-md-12" p-label="Chart options"></po-divider>
+
+    <po-number
+      class="po-md-4"
+      name="minRange"
+      [(ngModel)]="options.axis.minRange"
+      p-help="Example: 0"
+      p-label="minRange"
+      (p-blur)="addOptions()"
+    >
+    </po-number>
+
+    <po-number
+      class="po-md-4"
+      name="maxRange"
+      [(ngModel)]="options.axis.maxRange"
+      p-help="Example: 100"
+      p-label="maxRange"
+      (p-blur)="addOptions()"
+    >
+    </po-number>
+
+    <po-number
+      class="po-md-4"
+      name="gridLines"
+      [(ngModel)]="options.axis.gridLines"
+      p-help="Example: 6"
+      p-label="gridLines"
+      (p-blur)="addOptions()"
+    >
+    </po-number>
+
+    <po-number
+      class="po-md-4"
+      name="innerRadius"
+      [(ngModel)]="options.innerRadius"
+      p-help="Example: value between 0 and 100"
+      p-label="innerRadius"
+      (p-blur)="addOptions()"
+    >
+    </po-number>
+
+    <po-checkbox-group
+      class="po-md-4"
+      name="propertiesOptions"
+      p-help="Boolean properties"
+      p-indeterminate
+      p-label="Properties"
+      [(ngModel)]="optionsActions"
+      [p-options]="propertiesOptions"
+      (p-change)="changeActionOptions()"
+    >
+    </po-checkbox-group>
+  </div>
+
+  <po-divider class="po-md-12"></po-divider>
+  <div class="po-row">
+    <po-button class="po-md-3" p-label="Sample Restore" (p-click)="restore()"> </po-button>
+  </div>
+</form>

@@ -1,0 +1,127 @@
+<div class="po-text-center">
+  <div class="po-font-title">Pre-appointment scheduling</div>
+</div>
+
+<form #schedulingForm="ngForm">
+  <div class="po-row">
+    <po-input class="po-lg-6" name="name" [(ngModel)]="name" p-clean p-label="Name" p-required> </po-input>
+
+    <po-email
+      class="po-lg-6"
+      name="email"
+      [(ngModel)]="email"
+      p-clean
+      p-label="Email"
+      p-placeholder="example@domain.com"
+      p-required
+    >
+    </po-email>
+  </div>
+
+  <div class="po-row">
+    <po-datepicker
+      class="po-lg-6"
+      name="birthday"
+      [(ngModel)]="birthday"
+      p-clean
+      p-label="Birthday"
+      p-placeholder="dd/mm/yyyy"
+      p-required
+    >
+    </po-datepicker>
+
+    <po-input
+      class="po-lg-6"
+      name="phone"
+      [(ngModel)]="phone"
+      p-clean
+      p-label="Phone number"
+      p-mask="(99) 99999-9999"
+      p-placeholder="(99) 99999-9999"
+      p-required
+    >
+    </po-input>
+  </div>
+
+  <div class="po-row">
+    <po-combo
+      class="po-lg-6"
+      name="city"
+      [(ngModel)]="city"
+      p-icon="po-icon-map"
+      p-label="Select a location"
+      p-placeholder="Select a location"
+      p-required
+      p-sort
+      [p-options]="citiesOptions"
+    >
+      <ng-template p-combo-option-template let-option>
+        <ng-container *ngIf="option.options; then OptionsGroupTitle; else optionsGroup"></ng-container>
+        <ng-template #OptionsGroupTitle>
+          <div class="po-row">
+            <po-avatar
+              class="po-sm-2 po-md-3 po-lg-1"
+              p-size="xs"
+              style="background-color: #fbfbfb"
+              [p-src]="getStateByLabel(option.label)"
+            >
+            </po-avatar>
+            <p class="po-combo-item-title po-sm-10 po-md-9 po-lg-11">{{ option.label }}</p>
+          </div>
+        </ng-template>
+        <ng-template #optionsGroup>
+          <div class="po-combo-item">
+            <div class="po-row">
+              <div class="po-sm-10 po-md-9 po-lg-11">{{ option.label }}</div>
+            </div>
+          </div>
+        </ng-template>
+      </ng-template>
+    </po-combo>
+
+    <po-select
+      class="po-lg-6"
+      name="typeScheduling"
+      [(ngModel)]="typeScheduling"
+      p-label="Type scheduling"
+      p-required
+      p-sort
+      [p-options]="typeSchedulings"
+    >
+    </po-select>
+
+    <po-combo
+      class="po-lg-6"
+      name="medicalSpecialty"
+      [(ngModel)]="medicalSpecialty"
+      p-icon="po-icon-exam"
+      p-label="Medical Specialty/Exam"
+      p-required
+      p-sort
+      [p-options]="medicalSpecialtyOptions"
+    >
+    </po-combo>
+  </div>
+
+  <div class="po-row">
+    <po-textarea
+      class="po-sm-12"
+      name="informations"
+      [(ngModel)]="informations"
+      p-help="Additional informations"
+      p-label="Informations"
+    >
+    </po-textarea>
+  </div>
+
+  <div class="po-row">
+    <po-button
+      class="po-md-3"
+      p-label="Schedule"
+      p-type="primary"
+      [p-disabled]="schedulingForm.invalid"
+      (p-click)="confirmPreAppointment(name)"
+    >
+    </po-button>
+  </div>
+</form>

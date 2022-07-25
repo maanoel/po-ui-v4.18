@@ -1,0 +1,37 @@
+<h2>Process request with Http Interceptor</h2>
+<p>Edit response object by server with pattern expected by Http Interceptor:</p>
+
+<po-code-editor [(ngModel)]="requestMessage" p-height="330" p-theme="vs-dark"> </po-code-editor>
+
+<hr />
+
+<form #requestForm="ngForm">
+  <div class="po-row">
+    <po-radio-group
+      class="po-md-6"
+      name="status"
+      [(ngModel)]="status"
+      p-label="Http Status"
+      [p-options]="statusOptions"
+      (p-change)="changeOption()"
+    >
+    </po-radio-group>
+
+    <po-radio-group
+      class="po-md-6"
+      name="headerParam"
+      [(ngModel)]="headerParam"
+      p-label="Disables Notifications"
+      [p-options]="headerParamOptions"
+    >
+    </po-radio-group>
+  </div>
+
+  <div class="po-row po-mt-1">
+    <po-button class="po-md-3" p-label="Process Request" (p-click)="processRequest()"> </po-button>
+  </div>
+
+  <div class="po-row po-mt-1">
+    <po-button class="po-md-3" p-label="Sample Restore" (p-click)="restore()"> </po-button>
+  </div>
+</form>
